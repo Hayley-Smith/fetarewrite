@@ -1,3 +1,5 @@
+import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/draggable_chart_type_card.dart';
+
 /// Bar chart with series legend example
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -18,15 +20,17 @@ class SimpleSeriesLegend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new charts.BarChart(
-      seriesList,
-      animate: animate,
-      barGroupingType: charts.BarGroupingType.grouped,
-      // Add the series legend behavior to the chart to turn on series legends.
-      // By default the legend will display above the chart.
-      behaviors: [
-        new charts.SeriesLegend(position: charts.BehaviorPosition.end)
-      ],
+    return DraggableChartTypeCard(
+      chart: new charts.BarChart(
+        seriesList,
+        animate: animate,
+        barGroupingType: charts.BarGroupingType.grouped,
+        // Add the series legend behavior to the chart to turn on series legends.
+        // By default the legend will display above the chart.
+        behaviors: [
+          new charts.SeriesLegend(position: charts.BehaviorPosition.end)
+        ],
+      ),
     );
   }
 

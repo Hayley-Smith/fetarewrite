@@ -3,23 +3,28 @@ import 'package:add_feature_practice/features/views/pp_builder/presentation/widg
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/slide_deck.dart';
 import 'package:flutter/material.dart';
 
-class LargeScreen extends StatelessWidget {
-  SlideDeck deck;
+class LargeScreen extends StatefulWidget {
+  final SlideDeck deck;
   LargeScreen({Key key, this.deck}) : super(key: key);
 
+  @override
+  _LargeScreenState createState() => _LargeScreenState();
+}
+
+class _LargeScreenState extends State<LargeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
         children: [
-          Expanded(
+          Flexible(
             child: ScrollingSidebar(),
           ),
-          Expanded(
+          Flexible(
             child: MainPanel(
-              deck: deck,
+              deck: widget.deck,
             ),
-            flex: 5,
+            flex: 6,
           )
         ],
       ),

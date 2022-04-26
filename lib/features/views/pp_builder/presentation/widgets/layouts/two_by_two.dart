@@ -1,14 +1,18 @@
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/layout.dart';
 import 'package:flutter/material.dart';
 
-class FourByFourLayout extends Layout {
-  FourByFourLayout({Key key});
+// ignore: must_be_immutable
+class TwoByTwoLayout extends Layout {
+  String type = "TwoByTwo";
+  TwoByTwoLayout({Key key});
 
   @override
-  State<FourByFourLayout> createState() => _FourByFourLayoutState();
+  State<TwoByTwoLayout> createState() => _FourByFourLayoutState();
 }
 
-class _FourByFourLayoutState extends State<FourByFourLayout> {
+class _FourByFourLayoutState extends State<TwoByTwoLayout> {
+  var caughtColor = Colors.grey;
+  var displayChart;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -18,6 +22,7 @@ class _FourByFourLayoutState extends State<FourByFourLayout> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               "Slide Title",
+              softWrap: true,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ),
@@ -55,10 +60,36 @@ class _FourByFourLayoutState extends State<FourByFourLayout> {
               SizedBox(
                 height: constraints.maxHeight * .4,
                 width: constraints.maxWidth * .4,
-                child: Card(
-                  color: Colors.grey[100],
+                child: DragTarget(
+                  onAccept: (Widget chart) {
+                    displayChart = chart;
+                  },
+                  builder: (
+                    BuildContext context,
+                    List<dynamic> accepted,
+                    List<dynamic> rejected,
+                  ) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          color: displayChart == null
+                              ? caughtColor
+                              : Colors.grey.shade200,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                              child: displayChart == null
+                                  ? Text("Drag Here!")
+                                  : displayChart),
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              ),
+              )
             ],
           ),
         ],

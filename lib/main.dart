@@ -1,8 +1,7 @@
-import 'dart:convert';
-
+import 'package:add_feature_practice/features/views/chart_builder/presentation/chart_builder_large_screen.dart';
 import 'package:add_feature_practice/features/views/landing_page/presentation/pages/landing_page.dart';
 import 'package:add_feature_practice/features/views/pp_builder/presentation/pages/pp_large_screen.dart';
-import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/four_by_four.dart';
+import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/two_by_two.dart';
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/title_content_chart.dart';
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/slide_card.dart';
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/slide_deck.dart';
@@ -12,6 +11,7 @@ void main() {
   runApp(MyApp());
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   List<SlideDeck> dummyDecks = [
     SlideDeck(
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     ),
     SlideDeck(listOfSlides: [
       SlideCard(
-        layout: FourByFourLayout(),
+        layout: TwoByTwoLayout(),
       ),
       SlideCard(
         layout: TitleContentChartLayout(),
@@ -30,10 +30,10 @@ class MyApp extends StatelessWidget {
     ]),
     SlideDeck(listOfSlides: [
       SlideCard(
-        layout: FourByFourLayout(),
+        layout: TwoByTwoLayout(),
       ),
       SlideCard(
-        layout: FourByFourLayout(),
+        layout: TwoByTwoLayout(),
       ),
     ])
   ];
@@ -47,18 +47,18 @@ class MyApp extends StatelessWidget {
         '/powerpoint': (context) => LargeScreen(
               deck: dummyDecks[0],
             ),
-        '/sampleDeck1': (context) => LargeScreen(
-              deck: dummyDecks[1],
-            ),
+        '/chartBuilder': (context) => ChartBuilderLargeScreen(),
         '/sampleDeck2': (context) => LargeScreen(
               deck: dummyDecks[2],
             ),
       },
       title: 'ETA - PowerPoint Builder',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'ETA - PowerPoint Builder'),
+      home: MyHomePage(
+        title: 'ETA ',
+      ),
     );
   }
 }

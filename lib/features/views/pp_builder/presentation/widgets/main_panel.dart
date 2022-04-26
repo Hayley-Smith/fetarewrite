@@ -1,11 +1,16 @@
-import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/title_content_chart.dart';
+import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/two_by_two.dart';
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/select_layout_dropdown.dart';
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/slide_card.dart';
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/slide_deck.dart';
 import 'package:flutter/material.dart';
 
+import 'layouts/layout.dart';
+
+// ignore: todo
+//TODO: add a deck preview button that links to a page that displays the current deck
 // ignore: must_be_immutable
 class MainPanel extends StatefulWidget {
+  Layout layout = TwoByTwoLayout();
   SlideDeck deck;
   MainPanel({Key key, this.deck}) : super(key: key);
 
@@ -14,8 +19,12 @@ class MainPanel extends StatefulWidget {
 }
 
 class _MainPanelState extends State<MainPanel> {
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
+  void _changeLayout(layout) {
+    widget.layout = layout;
+  }
+
+  Future<void> _newSlideDialog() async {
+    return showDialog<Layout>(
       context: context,
       barrierDismissible: true,
       builder: (BuildContext context) {
@@ -24,7 +33,7 @@ class _MainPanelState extends State<MainPanel> {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                SelectLayoutDropdown(),
+                SelectLayoutDropdown(changeLayout: _changeLayout),
               ],
             ),
           ),
@@ -50,7 +59,9 @@ class _MainPanelState extends State<MainPanel> {
           title: const Text('Share Editing Privileges'),
           content: SingleChildScrollView(
             child: ListBody(
-              children: [TextField()],
+              children: [
+                TextField(),
+              ],
             ),
           ),
           actions: <Widget>[
@@ -83,6 +94,7 @@ class _MainPanelState extends State<MainPanel> {
               child: const Text('Send Invite'),
               onPressed: () {
                 Navigator.of(context).pop();
+                _newSlideDialog();
               },
             ),
           ],
@@ -185,7 +197,7 @@ class _MainPanelState extends State<MainPanel> {
                   Card(
                     color: Colors.white,
                     child: SizedBox(
-                      height: MediaQuery.of(context).size.height * .25,
+                      height: MediaQuery.of(context).size.height * .275,
                       child: widget.deck,
                     ),
                   ),
@@ -201,19 +213,17 @@ class _MainPanelState extends State<MainPanel> {
         child: Icon(
           Icons.add_box_outlined,
         ),
-        onPressed: () {
-          print(widget.deck.listOfSlides.length);
+        onPressed: () async {
+          await _newSlideDialog();
           setState(() {
             widget.deck = SlideDeck(listOfSlides: [
               ...widget.deck.listOfSlides,
               SlideCard(
-                layout: TitleContentChartLayout(),
+                layout: widget.layout,
               ),
             ]);
           });
-
-          print(widget.deck.listOfSlides.length);
-          //_showMyDialog();
+          widget.layout = TwoByTwoLayout();
         },
       ),
     );

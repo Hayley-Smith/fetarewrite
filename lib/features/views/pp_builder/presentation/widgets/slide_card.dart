@@ -1,13 +1,11 @@
-import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/four_by_four.dart';
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/layout.dart';
-import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/title_content_chart.dart';
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/select_layout_dropdown.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class SlideCard extends StatefulWidget {
   Layout layout;
-  SlideCard({Key key, this.layout}) : super(key: key);
+  SlideCard({Key key, @required this.layout}) : super(key: key);
 
   SlideCard.empty({
     Key key,
@@ -18,6 +16,10 @@ class SlideCard extends StatefulWidget {
 }
 
 class _SlideCardState extends State<SlideCard> {
+  void _changeLayout(layout) {
+    widget.layout = layout;
+  }
+
   Future<void> _showEditSlideDialog() async {
     return showDialog<void>(
       context: context,
@@ -28,9 +30,7 @@ class _SlideCardState extends State<SlideCard> {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                SelectLayoutDropdown(),
-                SelectLayoutDropdown(),
-                SelectLayoutDropdown(),
+                SelectLayoutDropdown(changeLayout: _changeLayout),
               ],
             ),
           ),
@@ -50,15 +50,14 @@ class _SlideCardState extends State<SlideCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onDoubleTap: () {
-        setState(() {
-          _showEditSlideDialog();
-        });
+      onDoubleTap: () async {
+        await _showEditSlideDialog();
+        setState(() {});
       },
       child: AspectRatio(
         aspectRatio: 16 / 9,
         child: Card(
-          child: TitleContentChartLayout(),
+          child: widget.layout,
           elevation: 30,
         ),
       ),

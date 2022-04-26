@@ -28,7 +28,9 @@ class _SlideDeckState extends State<SlideDeck> {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: SlideCard(),
+              child: SlideCard(
+                layout: widget.listOfSlides[index].layout,
+              ),
             );
           }),
     );

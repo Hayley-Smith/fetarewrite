@@ -52,7 +52,7 @@ class _LandingPageCardState extends State<LandingPageCard> {
             height: 200,
             child: InkWell(
               onTap: () {
-                Navigator.pushNamed(context, '/sampleDeck1');
+                Navigator.pushNamed(context, '/chartBuilder');
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +60,7 @@ class _LandingPageCardState extends State<LandingPageCard> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Sample Deck 1",
+                      "Create a New Chart",
                       textAlign: TextAlign.center,
                     ),
                   ),

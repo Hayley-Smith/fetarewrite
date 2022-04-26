@@ -2,7 +2,6 @@ import 'package:add_feature_practice/features/bar_chart/presentation/widgets/bar
 import 'package:add_feature_practice/features/bar_chart/presentation/widgets/horizontal_bar_chart.dart';
 import 'package:add_feature_practice/features/pie_chart/presentation/widgets/draggable_pie_with_legend.dart';
 import 'package:add_feature_practice/features/pie_chart/presentation/widgets/pie_chart_widget.dart';
-import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/draggable_chart_type_card.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -42,7 +41,12 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   }
 }
 
-class CollapsingList extends StatelessWidget {
+class CollapsingList extends StatefulWidget {
+  @override
+  _CollapsingListState createState() => _CollapsingListState();
+}
+
+class _CollapsingListState extends State<CollapsingList> {
   SliverPersistentHeader makeHeader(String headerText) {
     return SliverPersistentHeader(
       pinned: true,
@@ -50,7 +54,13 @@ class CollapsingList extends StatelessWidget {
         minHeight: 60.0,
         maxHeight: 100.0,
         child: Container(
-            color: Colors.green, child: Center(child: Text(headerText))),
+          color: Colors.green,
+          child: Center(
+            child: Text(
+              headerText,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -59,7 +69,45 @@ class CollapsingList extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        makeHeader('Chart Types'),
+        makeHeader('Project Level Chart Library'),
+        SliverGrid.count(
+          crossAxisCount: 1,
+          children: [
+            Container(
+              color: Colors.white,
+              height: 60.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: DraggablePieWithLegend(),
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              height: 60.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SimpleBarChart.withSampleData(),
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              height: 60.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PieOutsideLabelChart.withSampleData(),
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              height: 60.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: HorizontalBarChartWithSecondaryAxis.withSampleData(),
+              ),
+            ),
+          ],
+        ),
+        makeHeader('Create A New Chart'),
         SliverGrid.count(
           crossAxisCount: 1,
           children: [
@@ -98,27 +146,42 @@ class CollapsingList extends StatelessWidget {
           ],
         ),
         makeHeader('Feedback'),
-        SliverFixedExtentList(
-          itemExtent: 100.0,
-          delegate: SliverChildListDelegate(
-            [
-              Container(
-                color: Colors.white,
+        SliverGrid.count(
+          crossAxisCount: 1,
+          children: [
+            Container(
+              color: Colors.white,
+              height: 60.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(child: Text("Here is some text")),
               ),
-              Container(
-                color: Colors.white,
+            ),
+            Container(
+              color: Colors.white,
+              height: 60.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(child: Text("Here is some text")),
               ),
-              Container(
-                color: Colors.white,
+            ),
+            Container(
+              color: Colors.white,
+              height: 60.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(child: Text("Here is some text")),
               ),
-              Container(
-                color: Colors.white,
+            ),
+            Container(
+              color: Colors.white,
+              height: 60.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(child: Text("Here is some text")),
               ),
-              Container(
-                color: Colors.green,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );

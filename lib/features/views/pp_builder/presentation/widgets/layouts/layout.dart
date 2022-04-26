@@ -1,3 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-abstract class Layout extends StatefulWidget {}
+// ignore: must_be_immutable
+abstract class Layout extends StatefulWidget {
+  String type;
+}

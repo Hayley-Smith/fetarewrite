@@ -1,14 +1,45 @@
+import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/two_by_two.dart';
+import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/layouts/title_content_chart.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SelectLayoutDropdown extends StatefulWidget {
-  const SelectLayoutDropdown({Key key}) : super(key: key);
+  Function changeLayout;
+  SelectLayoutDropdown({Key key, this.changeLayout})
+      : super(
+          key: key,
+        );
 
   @override
   State<SelectLayoutDropdown> createState() => _SelectLayoutDropdownState();
 }
 
 class _SelectLayoutDropdownState extends State<SelectLayoutDropdown> {
-  String dropdownValue = 'Title and Chart';
+  void select() {
+    switch (dropdownValue) {
+      case "Two by Two":
+        {
+          widget.changeLayout(TwoByTwoLayout());
+          print("two by two layout selected");
+        }
+        break;
+
+      case "Title/Content/Chart":
+        {
+          widget.changeLayout(TitleContentChartLayout());
+          print("title content chart selected");
+        }
+        break;
+
+      default:
+        {
+          print("Invalid choice");
+        }
+        break;
+    }
+  }
+
+  String dropdownValue = 'Two by Two';
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +55,12 @@ class _SelectLayoutDropdownState extends State<SelectLayoutDropdown> {
       onChanged: (String newValue) {
         setState(() {
           dropdownValue = newValue;
+          select();
         });
       },
       items: <String>[
-        'Title and Chart',
-        'Four by Four',
-        'One over Two',
-        'Two over one'
+        'Two by Two',
+        'Title/Content/Chart',
       ].map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
