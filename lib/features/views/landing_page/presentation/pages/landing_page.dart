@@ -15,6 +15,7 @@ class _LandingPageState extends State<LandingPage> {
     SlideDeck(),
     SlideDeck(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

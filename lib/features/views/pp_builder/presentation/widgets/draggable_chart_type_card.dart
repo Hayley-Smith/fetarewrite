@@ -1,3 +1,4 @@
+import 'package:add_feature_practice/features/bar_chart/presentation/widgets/bar_chart_widget.dart';
 import 'package:flutter/material.dart';
 
 class DraggableChartTypeCard extends StatefulWidget {

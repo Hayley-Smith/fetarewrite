@@ -3,12 +3,13 @@ import 'package:add_feature_practice/features/views/pp_builder/presentation/widg
 import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/slide_deck.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class LargeScreen extends StatefulWidget {
   final SlideDeck deck;
   LargeScreen({Key key, this.deck}) : super(key: key);
 
   @override
-  _LargeScreenState createState() => _LargeScreenState();
+  State<LargeScreen> createState() => _LargeScreenState();
 }
 
 class _LargeScreenState extends State<LargeScreen> {

@@ -60,13 +60,32 @@ class _MainPanelState extends State<MainPanel> {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
+<<<<<<< HEAD
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Enter Fellow Editors Email',
+                    ),
+                  ),
+                ),
+=======
                 TextField(),
+>>>>>>> 7d94de8cea07f140b880d08eaf2e59bd60063065
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
               child: const Text('Send Invite'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -86,7 +105,28 @@ class _MainPanelState extends State<MainPanel> {
           title: const Text('Enter Recipients Email'),
           content: SingleChildScrollView(
             child: ListBody(
-              children: [TextField()],
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Enter Recipient Email',
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Add a note',
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           actions: <Widget>[
@@ -95,6 +135,16 @@ class _MainPanelState extends State<MainPanel> {
               onPressed: () {
                 Navigator.of(context).pop();
                 _newSlideDialog();
+<<<<<<< HEAD
+              },
+            ),
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _newSlideDialog();
+=======
+>>>>>>> 7d94de8cea07f140b880d08eaf2e59bd60063065
               },
             ),
           ],
@@ -112,12 +162,29 @@ class _MainPanelState extends State<MainPanel> {
           title: const Text('Save Deck'),
           content: SingleChildScrollView(
             child: ListBody(
-              children: [],
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'C:/',
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           actions: <Widget>[
             TextButton(
               child: const Text('Save'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -130,6 +197,16 @@ class _MainPanelState extends State<MainPanel> {
 
   @override
   Widget build(BuildContext context) {
+    final deckTitleController = TextEditingController();
+
+    @override
+    void dispose() {
+      deckTitleController.dispose();
+      super.dispose();
+    }
+
+    ;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,

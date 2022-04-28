@@ -1,5 +1,8 @@
 import 'package:add_feature_practice/features/bar_chart/presentation/widgets/bar_chart_widget.dart';
+import 'package:add_feature_practice/features/bar_chart/presentation/widgets/draggable_horizontal_bar_chart.dart';
+import 'package:add_feature_practice/features/bar_chart/presentation/widgets/draggable_simple_bar_chart.dart';
 import 'package:add_feature_practice/features/bar_chart/presentation/widgets/horizontal_bar_chart.dart';
+import 'package:add_feature_practice/features/pie_chart/presentation/widgets/draggable_pie_outside_label.dart';
 import 'package:add_feature_practice/features/pie_chart/presentation/widgets/draggable_pie_with_legend.dart';
 import 'package:add_feature_practice/features/pie_chart/presentation/widgets/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +46,11 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 
 class CollapsingList extends StatefulWidget {
   @override
+<<<<<<< HEAD
+  State<CollapsingList> createState() => _CollapsingListState();
+=======
   _CollapsingListState createState() => _CollapsingListState();
+>>>>>>> 7d94de8cea07f140b880d08eaf2e59bd60063065
 }
 
 class _CollapsingListState extends State<CollapsingList> {
@@ -70,6 +77,8 @@ class _CollapsingListState extends State<CollapsingList> {
     return CustomScrollView(
       slivers: <Widget>[
         makeHeader('Project Level Chart Library'),
+<<<<<<< HEAD
+=======
         SliverGrid.count(
           crossAxisCount: 1,
           children: [
@@ -108,6 +117,7 @@ class _CollapsingListState extends State<CollapsingList> {
           ],
         ),
         makeHeader('Create A New Chart'),
+>>>>>>> 7d94de8cea07f140b880d08eaf2e59bd60063065
         SliverGrid.count(
           crossAxisCount: 1,
           children: [
@@ -124,7 +134,7 @@ class _CollapsingListState extends State<CollapsingList> {
               height: 60.0,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: SimpleBarChart.withSampleData(),
+                child: DraggableBarChart(),
               ),
             ),
             Container(
@@ -132,7 +142,7 @@ class _CollapsingListState extends State<CollapsingList> {
               height: 60.0,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: PieOutsideLabelChart.withSampleData(),
+                child: DraggablePieOutsideLabel(),
               ),
             ),
             Container(
@@ -140,11 +150,89 @@ class _CollapsingListState extends State<CollapsingList> {
               height: 60.0,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: HorizontalBarChartWithSecondaryAxis.withSampleData(),
+                child: DraggableHorizontalBar(),
               ),
             ),
           ],
         ),
+<<<<<<< HEAD
+        //makeHeader('Create A New Chart'),
+        // SliverGrid.count(
+        //   crossAxisCount: 1,
+        //   children: [
+        //     Container(
+        //       color: Colors.white,
+        //       height: 60.0,
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: DraggablePieWithLegend(),
+        //       ),
+        //     ),
+        //     Container(
+        //       color: Colors.white,
+        //       height: 60.0,
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: DraggableBarChart(),
+        //       ),
+        //     ),
+        //     Container(
+        //       color: Colors.white,
+        //       height: 60.0,
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: PieOutsideLabelChart.withSampleData(),
+        //       ),
+        //     ),
+        //     Container(
+        //       color: Colors.white,
+        //       height: 60.0,
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: HorizontalBarChartWithSecondaryAxis.withSampleData(),
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        // makeHeader('Feedback'),
+        // SliverGrid.count(
+        //   crossAxisCount: 1,
+        //   children: [
+        //     Container(
+        //       color: Colors.white,
+        //       height: 60.0,
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Center(child: Text("Here is some text")),
+        //       ),
+        //     ),
+        //     Container(
+        //       color: Colors.white,
+        //       height: 60.0,
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Center(child: Text("Here is some text")),
+        //       ),
+        //     ),
+        //     Container(
+        //       color: Colors.white,
+        //       height: 60.0,
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Center(child: Text("Here is some text")),
+        //       ),
+        //     ),
+        //     Container(
+        //       color: Colors.white,
+        //       height: 60.0,
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Center(child: Text("Here is some text")),
+        //       ),
+        //     ),
+        //   ],
+        // ),
+=======
         makeHeader('Feedback'),
         SliverGrid.count(
           crossAxisCount: 1,
@@ -183,6 +271,7 @@ class _CollapsingListState extends State<CollapsingList> {
             ),
           ],
         ),
+>>>>>>> 7d94de8cea07f140b880d08eaf2e59bd60063065
       ],
     );
   }

@@ -2,7 +2,7 @@ import 'package:add_feature_practice/features/bar_chart/domain/entities/data_ite
 
 class DataSeries {
   final String id;
-  List<DataItem> dataItems;
+  final List<DataItem> dataItems;
 
   DataSeries({this.id, this.dataItems});
 }

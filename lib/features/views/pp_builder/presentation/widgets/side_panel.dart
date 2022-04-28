@@ -1,10 +1,7 @@
 import 'package:add_feature_practice/features/bar_chart/presentation/widgets/bar_chart_with_legend.dart';
 import 'package:add_feature_practice/features/bar_chart/presentation/widgets/horizontal_bar_chart.dart';
-import 'package:add_feature_practice/features/bar_chart/presentation/widgets/scatter_plot_widget.dart';
 import 'package:add_feature_practice/features/pie_chart/presentation/widgets/draggable_pie_with_legend.dart';
 import 'package:add_feature_practice/features/pie_chart/presentation/widgets/pie_chart_widget.dart';
-import 'package:add_feature_practice/features/pie_chart/presentation/widgets/pie_with_legend.dart';
-import 'package:add_feature_practice/features/views/pp_builder/presentation/widgets/draggable_chart_type_card.dart';
 import 'package:flutter/material.dart';
 
 class SidePanel extends StatefulWidget {
@@ -25,7 +22,7 @@ class _SidePanelState extends State<SidePanel> {
             SizedBox(
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: Text("Select a chart"),
+                child: Text("Select a chart and drag it to a target"),
               ),
               height: 55,
             ),
@@ -50,22 +47,19 @@ class _SidePanelState extends State<SidePanel> {
                 ),
               ),
             ),
-            ColorFiltered(
-              colorFilter: ColorFilter.mode(Colors.grey, BlendMode.saturation),
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    height: 200,
-                    child: Center(
-                      child: DraggableChartTypeCard(
-                        chart: BucketingAxisScatterPlotChart.withSampleData(),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            // ColorFiltered(
+            //   colorFilter: ColorFilter.mode(Colors.grey, BlendMode.saturation),
+            //   child: Card(
+            //     child: Padding(
+            //       padding: const EdgeInsets.all(8.0),
+            //       child: SizedBox(
+            //         height: 200,
+            //         child: Center(
+            //             child: BucketingAxisScatterPlotChart.withSampleData()),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
